@@ -4,6 +4,72 @@
 
 #include <iostream>
 using namespace std;
+class Point {
+
+    int x;
+    int y;
+public:
+    Point(int _x=0, int _y=0):x(_x),y(_y){}
+    void print() const{cout<< x<< ", "<< y<< ", "<< endl;}
+};
+class PointPtr{
+    Point *ptr;
+public:
+    PointPtr(Point *p):ptr(p){}
+    ~PointPtr(){delete ptr;}
+
+    Point* operator->() const{
+        return ptr;
+    }
+
+    Point& operator*() const{
+        return *ptr;
+    }
+};
+void ex1_22(){
+    Point* p1 = new Point(2, 3);
+    PointPtr p2 = new Point(5, 5);
+
+    p1->print(); // p1.operator->()->Print() 호출
+    p2->print(); // p2.operator->()->Print() 호출
+    cout << endl;
+
+    (*p1).print(); //(*p1).print()
+    (*p2).print(); //p2.operator*().print()
+
+    delete p1;
+}
+void ex1_21(){
+    PointPtr p1 = new Point(2, 3);
+    PointPtr p2 = new Point(5, 5);
+
+    p1->print(); // p1.operator->()->Print() 호출
+    p2->print(); // p2.operator->()->Print() 호출
+    // p1, p2 의 destructor 에 의해서 자동으로 소멸
+
+}
+
+void ex1_20(){
+    PointPtr p1 = new Point(2, 3);
+    PointPtr p2 = new Point(5, 5);
+
+//    p1->print(); //아직 서비스 사용 못함
+//    p2->print(); //아직 서비스 사용 못함
+    // p1, p2 의 destructor 에 의해서 자동으로 소멸
+
+}
+
+void ex1_19(){
+    Point *p1 = new Point(2, 3);
+    Point *p2 = new Point(5, 5);
+
+    p1->print();
+    p2->print();
+
+    delete p1;
+    delete p2;
+
+}
 
 class FuncObject //c++ 에서 struct ,  class 둘다 같음. 차이는 기본 필드속성이 public / private
 {
@@ -30,7 +96,7 @@ public:
         }
 
     }
-    //&가 안붙으면 안불림 
+    //&가 안붙으면 안불림
     int& operator[](int idx){
         cout<< "called not const : ";
         if(idx < 4){
@@ -111,6 +177,6 @@ void ex1_14(){
     Print3(10);
 }
 int main(){
-    ex1_18();
+    ex1_22();
     return 0;
 }
