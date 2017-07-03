@@ -1,8 +1,8 @@
 //
 // Created by yoonsung-mac on 30/06/2017.
 //
-#include <iostream>
 #include <cmath>
+#include <iostream>
 using namespace std;
 
 class A{
