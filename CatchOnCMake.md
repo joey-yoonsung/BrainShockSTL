@@ -36,6 +36,8 @@ If you don't have any experience unit testing tool in c++ world, I can suggest t
 
   In other word, ctest just triggers the executable file whether this executable has unit test or not.
 
+  Then, we just make executable file including unit test sources and add it to test target.
+
   * Step
 
     1. Set include directory
