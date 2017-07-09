@@ -44,9 +44,10 @@ void ex2_5(){
     //멤버함수 포인터
     Point pt(2,3);
     Point* p=&pt;
+    void (*pf3)() const;
 
     void (Point::*pf1)() const;
-    pf1 = (void (Point::*)() const) &Point::Print; //static Print(int n) 이 있으면 캐스팅 없이 못씀
+    pf1 = &Point::Print; //static Print(int n) 이 있으면 캐스팅 없이 못씀
 
     void (Point::*pf2)(int);
     pf2 = &Point::PrintInt;
@@ -62,6 +63,7 @@ void ex2_5(){
     (p->*pf1)();
     (p->*pf2)(10);
 
+    cout << &pt << endl;
 }
 void ex2_4(){
     //적정함수 포인터
@@ -105,7 +107,7 @@ void ex2_2(){
     cout<< endl;
     cout << &Print << endl; //TODO : 왜 주소가 안나오지?
     cout << &pf << endl;
-    cout << &(*pf) << endl;
+    cout << (*pf) << endl;
 
     pf = TempFunc;
     pf(5);

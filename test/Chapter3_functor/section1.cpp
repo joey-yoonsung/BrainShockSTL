@@ -25,6 +25,7 @@ struct Functor{
         cout << "함수 객체 : " << (a+b)<< endl;
     }
 };
+
 class Adder{
     int total;
 public :
@@ -49,6 +50,7 @@ struct Functor3{
         cout << "정수 : " << n << endl;
     }
 };
+
 void ex3_3(){
     Adder add(0);
     cout<< add(10)<< endl;
