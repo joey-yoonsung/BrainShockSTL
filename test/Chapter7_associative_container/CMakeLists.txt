@@ -7,18 +7,18 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 option(BUILD_TEST "Build the unit tests" ON)
 
-set(YOUR_CATCH_ROOT_DIR "/Users/yoonsung-mac/OpenSources/Catch")
-
-add_executable(Test_CatchTutorial_01 tutorial.cpp)
-#target_link_libraries(Test_CatchTutorial_01 Catch)
-
-add_executable(Test_CatchTutorial_02 tutorial2.cpp)
-target_link_libraries(Test_CatchTutorial_02 Catch)
+add_executable(Chapter7_Section01 section01_set.cpp)
+add_executable(Chapter7_Section02 section02_map.cpp)
+add_executable(Chapter7_Section03 section03_multiset.cpp)
+add_executable(Chapter7_Section03 section04_multimap.cpp)
 
 enable_testing()
 
-add_test(NAME CatchTutorial_01 COMMAND Test_CatchTutorial_01 -o "result1" -r "junit" )
-add_test(CatchTutorial_02 Test_CatchTutorial_02 -o "result1" -r "xml")
+add_test(Chapter7_Section01 Chapter7_Section01 -o "result1.xml" -r "junit")
+add_test(Chapter7_Section02 Chapter7_Section02 -o "result2.xml" -r "junit")
+add_test(Chapter7_Section03 Chapter7_Section03 -o "result3.xml" -r "junit")
+add_test(Chapter7_Section04 Chapter7_Section04 -o "result4.xml" -r "junit")
+
 # arg 값이 잘못되어 no test run (catch에서)상태가 되어도 ctest 는 passed로 처리한다.
 ## 잘못 입력된 값이지만 성공한 예
 ### add_test(CatchTutorial_02 Test_CatchTutorial_02 "[vectoc][resize]")  # 원래 결과는  no test run 이어야 함.

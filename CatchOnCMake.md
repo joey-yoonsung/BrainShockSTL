@@ -49,7 +49,6 @@ If you don't have any experience unit testing tool in c++ world, I can suggest t
     2. Set library
         ```cmake
         add_library(Catch INTERFACE)
-        target_link_libraries(Catch INTERFACE ${CATCH})
         ```
 
     3. Set executable
@@ -112,7 +111,7 @@ If you don't have any experience unit testing tool in c++ world, I can suggest t
 
   * Test Result
 
-    We can't confirm the test result if use cmake test. So, we have to pick it out file.
+    We can't confirm the test result if use cmake test on console. So, we have to pick it out file.
 
     '-o' option for file output. '-r' option for output form.
     ```cmake

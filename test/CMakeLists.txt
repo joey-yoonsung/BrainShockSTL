@@ -11,5 +11,6 @@ include_directories(${CATCH})
 option(BUILD_TEST "Build the unit tests" ON)
 
 add_subdirectory(Catch_tutorial)
-
+add_subdirectory(Chapter6_sequence_container)
+add_subdirectory(Chapter7_associative_container)
 enable_testing()
