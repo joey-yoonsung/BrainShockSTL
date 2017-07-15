@@ -8,9 +8,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 option(BUILD_TEST "Build the unit tests" ON)
 
 add_executable(Chapter7_Section01 section01_set.cpp)
-add_executable(Chapter7_Section02 section02_map.cpp)
-add_executable(Chapter7_Section03 section03_multiset.cpp)
-add_executable(Chapter7_Section03 section04_multimap.cpp)
+add_executable(Chapter7_Section02 section02_multiset.cpp)
+add_executable(Chapter7_Section03 section03_map.cpp)
+add_executable(Chapter7_Section04 section04_multimap.cpp)
 
 enable_testing()
 

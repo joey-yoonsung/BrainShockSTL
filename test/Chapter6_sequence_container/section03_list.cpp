@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <list>
+#include <map>
 
 using namespace std;
 
@@ -30,8 +31,6 @@ TEST_CASE("CHAPTER6", "[stl][sequence][container][list]") {
     for (list<int>::size_type i = 0; i < 5; ++i) {
         lt.push_back(10 * (i + 1));
     }
-
-    cout << "global count : "<< ++globalCount << endl;
 
     SECTION("EX_6-32") {
         list<int>::iterator iter;
@@ -95,7 +94,6 @@ TEST_CASE("CHAPTER6", "[stl][sequence][container][list]") {
 
 
     SECTION("EX_6-37") {
-        cout << "local count : " << ++localCount << endl;
         list<int> lt2;
         for(int i=0; i<5 ;++i){
             lt2.push_back(100 * (i+1));
@@ -121,15 +119,6 @@ TEST_CASE("CHAPTER6", "[stl][sequence][container][list]") {
         }
         REQUIRE(sumTotal == 1650);
         REQUIRE(sumLt2 == 1500);
-
-        cout<< "out section "<< endl;
-        SECTION("in section1"){
-            cout << "insection 1"<< endl;
-        }
-
-        SECTION("in section2"){
-            cout << "insection 2"<< endl;
-        }
     }
 
     SECTION("EX_6-38"){
@@ -225,12 +214,34 @@ TEST_CASE("CHAPTER6", "[stl][sequence][container][list]") {
         lt.merge(lt2, std::greater<int>());
 
         list<int>::iterator iter=lt.begin();
-        cout<< *iter<< endl;
         REQUIRE(*iter == 60);
         ++iter;++iter;++iter;
         REQUIRE(*iter == 35);
         ++iter;++iter;
         REQUIRE(*iter == 25);
+    }
+
+    SECTION("ex"){
+        map<int, int> m;
+        m[1]= 1;
+        m[2] =2;
+
+        pair<map<int, int>::iterator, map<int,int>::iterator> iter_pair;
+        iter_pair = m.equal_range(3);
+        map<int, int>::iterator iter;
+
+
+        iter = iter_pair.first;
+//        if( iter_pair.first == nullptr){
+//            cout<< "null pair" << endl;
+//        }else {
+//
+//            if (iter->first == nullptr) {
+//                cout << "null" << endl;
+//            } else {
+                cout << iter->first << " : " << iter->second << endl;
+//            }
+//        }
     }
 }
 
