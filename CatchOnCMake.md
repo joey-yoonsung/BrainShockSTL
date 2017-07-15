@@ -1,7 +1,7 @@
 # How to use Catch Framework on CMake Project.
 This tutorial will be helpful who do not experienced with CMake yet and try to adjust unit testing using Catch framework on CMake.
 
-If you don't have any experience unit testing tool in c++ world, I can suggest the Catch framework as the easiest tool for beginner. These guy will be easy to adjust unit testing following this tutorial.
+If you don't have any experience unit testing tool in c++ world, I can suggest the Catch framework as the easiest tool for beginner. These guy will be easy to adjust unit testing as following this tutorial.
 
 
 ## Basic Source Prerequisite on Catch framework
