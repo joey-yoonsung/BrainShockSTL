@@ -23,7 +23,7 @@ TEST_CASE("CHAPTER7", "[stl][associative][container][set]") {
     mm.insert(pair<int, int>(6, 60));
     mm.insert(pair<int, int>(4, 40));
     mm.insert(pair<int, int>(4, 45));
-    mm.insert(pair<int, int>(7, 70));
+//    mm.insert(pair<int, int>(7, 70));
 
     pair<int, int> pr(9, 90);
     mm.insert(pr);
@@ -74,15 +74,9 @@ TEST_CASE("CHAPTER7", "[stl][associative][container][set]") {
             }
         }
 
-        iter_pair == mm.equal_range(10);
-        REQUIRE_FALSE(iter_pair.first == mm.end());
-        REQUIRE(iter_pair.first == iter_pair.second); // TODO : 이게 왜 틀렸지?
-        // TODO : 그럼 멀티맵은 틀렸는지 어떻게 확인해?
+        iter_pair = mm.equal_range(70);
+        REQUIRE(iter_pair.first == mm.end());
+        REQUIRE(iter_pair.first == iter_pair.second);
 
-        /*
-        * TODO : multi 종류는 실패했을때   map.end()와 같지 않다.
-        * multi 가 아닌 associative container 는 실패했을때 container.end() 를 반환 한다
-         *
-        */
     }
 }
