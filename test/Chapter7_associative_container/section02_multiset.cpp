@@ -53,9 +53,9 @@ TEST_CASE("CHAPTER7", "[stl][associative][container][set]") {
         }
 
         iter_pair = ms.equal_range(55);
-        REQUIRE(iter_pair.first == iter_pair.second);
+        REQUIRE(iter_pair.first == iter_pair.second); //TODO : pair는 실패를 기본적으로 first==second  로 확인
         REQUIRE(*iter_pair.first == 60 );
         REQUIRE(*iter_pair.second == 60 );
-        REQUIRE_FALSE(iter_pair.first == ms.end()); //여긴 왜 또 end 가 아니지?
+        REQUIRE_FALSE(iter_pair.first == ms.end()); // TODO : 여긴 왜 또 end 가 아니지?
     }
 }
