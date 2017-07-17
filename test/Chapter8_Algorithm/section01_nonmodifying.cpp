@@ -324,3 +324,186 @@ TEST(ex_8_16, lexicographical_compare_if) {
     // TODO : Equal 은 어떻게 되지? 사전편집순이 정확히 뭐야??
 }
 
+class Point{
+    int x,y;
+public:
+    explicit  Point(int _x=0, int _y=0):x(_x), y(_y){}
+    int GetX() const {return x;}
+    int GetY() const {return y;}
+    void Print() const {cout << '('<< x<< ','<< y<< ')'<< endl;}
+};
+
+bool XCompare(const Point& left, const Point& right){
+    return left.GetX() < right.GetX();
+}
+bool YCompare(const Point& left, const Point& right){
+    return left.GetY() < right.GetY();
+}
+
+TEST(ex_8_17, max_min){
+    int r=max(10,20);
+    EXPECT_EQ(r, 20);
+    r= min(10, 20);
+    EXPECT_EQ(r, 10);
+
+    Point pt1(5,8), pt2(3,9);
+    Point pt3;
+
+    pt3= max(pt1, pt2, XCompare);
+    EXPECT_EQ(pt3.GetX(), pt1.GetX());
+    pt3= max(pt1, pt2, YCompare);
+    EXPECT_EQ(pt3.GetY(), pt2.GetY());
+
+}
+bool FakeComp_Less(int left, int right){
+    return left > right;
+}
+
+TEST(ex_8_18, max_min_element){
+    vector<int> v1;
+    v1.push_back(30);
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(50);
+    v1.push_back(40);
+
+    vector<int>::iterator iter;
+    iter = max_element(v1.begin(), v1.end());
+    EXPECT_EQ(*iter, 50);
+    iter = min_element(v1.begin(), v1.end());
+    EXPECT_EQ(*iter, 10);
+
+
+    iter = min_element(v1.begin(), v1.end(), FakeComp_Less);
+    EXPECT_EQ(*iter, 50);
+}
+
+bool Comp_Point(const Point& left, const Point& right){
+    if(left.GetX() < right.GetX())
+        return true;
+    else if(left.GetX() > right.GetX())
+        return false;
+    else
+        return left.GetY() < right.GetY();
+}
+TEST(ex_8_19, max_element_if){
+    vector<Point> v;
+    v.push_back(Point(3,2));
+    v.push_back(Point(2,5));
+    v.push_back(Point(1,5));
+    v.push_back(Point(3,3));
+    v.push_back(Point(3,2));
+
+    vector<Point>::iterator iter;
+//    iter = max_element(v.begin(), v.end()); // TODO : 일케하면 컴파일이 안됨.
+//    EXPECT_TRUE( iter == v.end());
+//    cout << iter->GetX() << endl;
+
+    iter = max_element(v.begin(), v.end(), Comp_Point);
+    EXPECT_EQ(iter->GetX(), 3);
+    EXPECT_EQ(iter->GetY(), 3);
+}
+
+TEST(ex_8_20, mismatch){
+    vector<int> v1;
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(30);
+    v1.push_back(40);
+    v1.push_back(50);
+
+    vector<int> v2;
+    v2.push_back(10);
+    v2.push_back(20);
+    v2.push_back(30);
+    v2.push_back(80);
+    v2.push_back(90);
+
+    pair<vector<int>::iterator, vector<int>::iterator> iter_pair;
+    iter_pair = mismatch(v1.begin(), v1.end(), v2.begin());
+    EXPECT_EQ(*iter_pair.first, 40);
+    EXPECT_EQ(*iter_pair.second, 80);
+}
+TEST(ex_8_21, mismatch_if){
+    vector<int> v1;
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(30);
+    v1.push_back(40);
+    v1.push_back(50);
+
+    vector<int> v2;
+    v2.push_back(11);
+    v2.push_back(24);
+    v2.push_back(33);
+    v2.push_back(46);
+    v2.push_back(50);
+
+    pair<vector<int>::iterator, vector<int>::iterator> iter_pair;
+    iter_pair = mismatch(v1.begin(), v1.end(), v2.begin(), Pred_SubLess5);
+    EXPECT_EQ(*iter_pair.first, 40);
+    EXPECT_EQ(*iter_pair.second, 46);
+}
+
+
+TEST(ex_8_22, search) {
+    vector<int> v1;
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(30); //pattern 1
+    v1.push_back(40); //pattern 1
+    v1.push_back(50); //pattern 1
+    v1.push_back(60);
+    v1.push_back(70);
+    v1.push_back(30); //pattern 2
+    v1.push_back(40); //pattern 2
+    v1.push_back(50); //pattern 2
+
+
+    vector<int> v2;
+    v2.push_back(30);
+    v2.push_back(40);
+    v2.push_back(50);
+
+    vector<int>::iterator iter = search(v1.begin(), v1.end(), v2.begin(), v2.end());
+    EXPECT_TRUE(iter != v1.end());
+    EXPECT_EQ(*iter, 30);
+    EXPECT_EQ(*(iter - 1), 20);
+    EXPECT_EQ(*(iter + 1), 40);
+    EXPECT_EQ((iter - 2), v1.begin());
+}
+TEST(ex_8_23, search_n) {
+    vector<int> v1;
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(30);
+    v1.push_back(30);
+    v1.push_back(30);
+    v1.push_back(40);
+    v1.push_back(50);
+
+    vector<int>::iterator iter;
+    iter = search_n(v1.begin(), v1.end(), 3, 30);
+    EXPECT_TRUE(iter != v1.end());
+    EXPECT_EQ(*iter, 30);
+    EXPECT_EQ(*(iter-1), 20);
+    EXPECT_EQ(*(iter+3), 40);
+}
+
+TEST(ex_8_24, search_n_if) {
+    vector<int> v1;
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(32);
+    v1.push_back(28);
+    v1.push_back(34);
+    v1.push_back(40);
+    v1.push_back(50);
+
+    vector<int>::iterator iter;
+    iter = search_n(v1.begin(), v1.end(), 3, 30, Pred_SubLess5);
+    EXPECT_TRUE(iter != v1.end());
+    EXPECT_EQ(*iter, 32);
+    EXPECT_EQ(*(iter-1), 20);
+    EXPECT_EQ(*(iter+3), 40);
+}
