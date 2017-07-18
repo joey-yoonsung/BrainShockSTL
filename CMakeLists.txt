@@ -11,6 +11,7 @@ set(YOUR_CATCH_ROOT_DIR "/Users/yoonsung-mac/OpenSources/Catch")
 set(CATCH "${YOUR_CATCH_ROOT_DIR}/include")
 include_directories(${CATCH})
 
+#add_library(Catch INTERFACE)
 #target_link_libraries(Catch INTERFACE ${CATCH}) #library 뽑는게 아니라 executable 뽑을 때는 target_link_libraries 가 필요 없나?
 
 ### GoogleTest Framework settings ###

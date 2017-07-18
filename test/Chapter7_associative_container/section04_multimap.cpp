@@ -74,8 +74,8 @@ TEST_CASE("CHAPTER7", "[stl][associative][container][set]") {
             }
         }
 
-        iter_pair = mm.equal_range(70);
-        REQUIRE(iter_pair.first == mm.end()); //TODO : 여기선 왜 end 를 받지
+        iter_pair = mm.equal_range(7);
+        REQUIRE(iter_pair.first->first == 8); //TODO : 여기선 왜 end 를 받지
         REQUIRE(iter_pair.first == iter_pair.second);
 
     }

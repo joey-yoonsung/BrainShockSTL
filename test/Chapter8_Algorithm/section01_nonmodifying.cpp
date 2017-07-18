@@ -312,16 +312,20 @@ TEST(ex_8_16, lexicographical_compare_if) {
     v1.push_back(10);
     v1.push_back(20);
     v1.push_back(30);
+    v1.push_back(40);
+
 
     vector<int> v2;
     v2.push_back(10);
     v2.push_back(25);
     v2.push_back(30);
+    v2.push_back(39);
 
     EXPECT_TRUE(lexicographical_compare(v1.begin(), v1.end(), v2.begin(), v2.end(), less<int>()));
     EXPECT_TRUE(!lexicographical_compare(v1.begin(), v1.end(), v2.begin(), v2.end(), greater<int>()));
-    EXPECT_TRUE(!lexicographical_compare(v1.begin(), v1.end(), v2.begin(), v2.end(), Equal<int>()));
+    EXPECT_TRUE(lexicographical_compare(v1.begin(), v1.end(), v2.begin(), v2.end(), Equal<int>()));
     // TODO : Equal 은 어떻게 되지? 사전편집순이 정확히 뭐야??
+    //OR조건으로 하나만 만족해도 TRUE
 }
 
 class Point{

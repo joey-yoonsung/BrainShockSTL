@@ -277,3 +277,56 @@ TEST(ex_8_37, swap_ranges){
         EXPECT_EQ(*iter, 10*i);
     }
 }
+
+int Func_Plus5(int n){
+    return n+5;
+}
+TEST(ex_8_38, transform){
+    vector<int> v1;
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(30);
+    v1.push_back(40);
+    v1.push_back(50);
+    vector<int> v2(5);
+    transform(v1.begin(), v1.end(), v2.begin(), Func_Plus5);
+    int i=1;
+    for(vector<int>::iterator iter = v2.begin() ; iter !=v2.end(); ++iter, ++i){
+        EXPECT_EQ(*iter, 10*i+5);
+    }
+
+    vector<int> v3(10);
+    vector<int>::iterator iter_end = transform(v1.begin(), v1.end(), v3.begin(), Func_Plus5);
+    i=1;
+    for(vector<int>::iterator iter = v3.begin() ; iter !=iter_end; ++iter, ++i){
+        EXPECT_EQ(*iter, 10*i+5);
+    }
+    for(vector<int>::iterator iter = iter_end; iter !=v3.end() ; ++iter){
+        EXPECT_EQ(*iter, 0);
+    }
+}
+
+TEST(ex_8_40, transform_two){
+    vector<int> v1;
+    v1.push_back(10);
+    v1.push_back(20);
+    v1.push_back(30);
+    v1.push_back(40);
+    v1.push_back(50);
+
+    vector<int> v2;
+    v2.push_back(1);
+    v2.push_back(2);
+    v2.push_back(3);
+    v2.push_back(4);
+    v2.push_back(5);
+
+    vector<int> v3;
+    vector<int>::iterator iter_end;
+    iter_end = transform(v1.begin(), v1.end(), v2.begin(), v3.begin(), plus<int>());
+
+    int i=1;
+    for(vector<int>::iterator iter = v3.begin() ; iter !=iter_end; ++iter, ++i){
+        EXPECT_EQ(*iter, 10*i+i);
+    }
+}

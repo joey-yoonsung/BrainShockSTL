@@ -14,8 +14,8 @@ add_executable(Chapter7_Section04 section04_multimap.cpp)
 
 enable_testing()
 
-add_test(Chapter7_Section01 Chapter7_Section01 -o "result1.xml" -r "junit")
-add_test(Chapter7_Section02 Chapter7_Section02 -o "result2.xml" -r "junit")
+add_test(Chapter7_Section01 Chapter7_Section01 -o "result1.xml" -r "xml")
+add_test(Chapter7_Section02 Chapter7_Section02 -o "result2.xml" -r "xml")
 add_test(Chapter7_Section03 Chapter7_Section03 -o "result3.xml" -r "junit")
 add_test(Chapter7_Section04 Chapter7_Section04 -o "result4.xml" -r "junit")
 
