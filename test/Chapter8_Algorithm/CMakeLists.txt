@@ -22,6 +22,8 @@ add_executable(Chapter8_Section05 section05_sorting.cpp)
 target_link_libraries(Chapter8_Section05 ${GTEST_DIR}/mybuild/libgtest.a ${GTEST_DIR}/mybuild/libgtest_main.a)
 add_executable(Chapter8_Section06 section06_sorted_range.cpp)
 target_link_libraries(Chapter8_Section06 ${GTEST_DIR}/mybuild/libgtest.a ${GTEST_DIR}/mybuild/libgtest_main.a)
+add_executable(Chapter8_Section07 section07_numeric.cpp)
+target_link_libraries(Chapter8_Section07 ${GTEST_DIR}/mybuild/libgtest.a ${GTEST_DIR}/mybuild/libgtest_main.a)
 
 enable_testing()
 
