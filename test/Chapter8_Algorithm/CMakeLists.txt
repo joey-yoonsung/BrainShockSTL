@@ -16,6 +16,8 @@ add_executable(Chapter8_Section02 section02_modifying.cpp)
 target_link_libraries(Chapter8_Section02 ${GTEST_DIR}/mybuild/libgtest.a ${GTEST_DIR}/mybuild/libgtest_main.a)
 add_executable(Chapter8_Section03 section03_removing.cpp)
 target_link_libraries(Chapter8_Section03 ${GTEST_DIR}/mybuild/libgtest.a ${GTEST_DIR}/mybuild/libgtest_main.a)
+add_executable(Chapter8_Section04 section04_mutating.cpp)
+target_link_libraries(Chapter8_Section04 ${GTEST_DIR}/mybuild/libgtest.a ${GTEST_DIR}/mybuild/libgtest_main.a)
 
 enable_testing()
 
@@ -23,6 +25,7 @@ add_test(GTEST_SAMPLE GTEST_SAMPLE)
 add_test(Chapter8_Section01 Chapter8_Section01)
 add_test(Chapter8_Section02 Chapter8_Section02)
 add_test(Chapter8_Section03 Chapter8_Section03)
+add_test(Chapter8_Section03 Chapter8_Section04)
 
 # arg 값이 잘못되어 no test run (catch에서)상태가 되어도 ctest 는 passed로 처리한다.
 ## 잘못 입력된 값이지만 성공한 예
