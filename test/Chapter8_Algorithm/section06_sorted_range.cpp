@@ -30,12 +30,11 @@ TEST(ex_8_66, binary_search){
     EXPECT_FALSE(binary_search(v.begin(), v.end(), 60));
 }
 
-bool Pred_SubLessThan3(int left, int right){
+bool Pred_SubGreaterThan3(int left, int right){
     return 3< right-left;
 }
 TEST(ex_8_67, binary_search_if){
-    /* TODO : Binary Search 를 이렇게 쓸 일이 있나..?
-    * 이렇게 차가 3이하인 예보다는 객체를 가지고 비교할때 쓸것 같은데
+    /* TODO : Binary Search 를 이렇게 쓸 일이 있나..? 이렇게 차가 3이하인 예보다는 객체로 객체의 멤버가지고 비교할때 쓸것 같은데
     */
     vector<int> v;
     v.push_back(40);
@@ -49,8 +48,10 @@ TEST(ex_8_67, binary_search_if){
     v.push_back(90);
     v.push_back(53);
 
-    EXPECT_TRUE(binary_search(v.begin(), v.end(), 32, Pred_SubLessThan3)); // TODO : false 인데 ? ㅋㅋㅋ
-    EXPECT_FALSE(binary_search(v.begin(), v.end(), 35, Pred_SubLessThan3));
+    
+    sort(v.begin(), v.end(), Pred_SubGreaterThan3);
+    EXPECT_TRUE(binary_search(v.begin(), v.end(), 32, Pred_SubGreaterThan3)); // 찾는 조건이 (!Pred(left, right)&& !Pred(right, left)) 
+    EXPECT_FALSE(binary_search(v.begin(), v.end(), 35, Pred_SubGreaterThan3));
 }
 
 TEST(ex_8_69, include){

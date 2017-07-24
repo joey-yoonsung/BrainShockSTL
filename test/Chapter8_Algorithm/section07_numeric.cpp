@@ -44,7 +44,7 @@ TEST(ex_8_77, func_accumulate){
     EXPECT_EQ(0, accumulate(v.begin(), v.end(), 0, multiplies<int>()));
 }
 
-TEST(ex_8_78, inner_product){
+TEST(ex_8_78, inner_product_내적){
     vector<int> v;
     v.push_back(1);
     v.push_back(2);
@@ -58,8 +58,7 @@ TEST(ex_8_78, inner_product){
     v2.push_back(2);
     v2.push_back(2);
     v2.push_back(2);
-    // TODO : 왜안대지
-//    EXPECT_EQ(30, inner_product(v.begin(), v.end(), v2.begin(), v2.end()));
+    EXPECT_EQ(30, inner_product(v.begin(), v.end(), v2.begin(), 0));
 }
 int Plus(int left, int right){
     return left+right;
@@ -82,9 +81,7 @@ TEST(ex_8_79, func_inner_product){
     v2.push_back(2);
     v2.push_back(2);
 
-    // TODO : 왜 안되지 ? type 이 안맞데
-//    cout << inner_product(v.begin(), v.end(), v2.begin(), 0, Plus, Minus) << endl;
-//    EXPECT_EQ(140, inner_product(v.begin(), v.end(), v2.begin(), 0, plus<int>(), minus<int>()));
+    EXPECT_EQ(140, inner_product(v.begin(), v.end(), v2.begin(), 0, plus<int>(), minus<int>()));
 }
 
 TEST(ex_8_80,  adjacent_difference){
