@@ -81,6 +81,7 @@ TEST(ex_8_50, stable_partition){ // 상대적 순서 유지, 하지만 느림
 
     vector<int>::iterator iter_sep;
     iter_sep = stable_partition(v.begin(), v.end(), Pred_LessThan40);
+
     for(vector<int>::iterator iter = v.begin(); iter != iter_sep ; ++iter){
         EXPECT_LE(*iter, 40);
     }
