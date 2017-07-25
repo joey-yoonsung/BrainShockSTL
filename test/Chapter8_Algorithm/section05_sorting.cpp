@@ -101,9 +101,10 @@ TEST(ex_8_60, heap_if){
 
     make_heap(v.begin(), v.end(), greater<int>());
     for(vector<int>::iterator iter = v.begin() ; iter!=v.end() ; ++iter){
+        cout << *iter << "  ";
         EXPECT_GE(*iter, *v.begin());
     }
-
+    cout <<endl;
     v.push_back(35);
     push_heap(v.begin(), v.end(), greater<int>());
     for(vector<int>::iterator iter = v.begin() ;iter!=v.end() ;++iter){
@@ -114,9 +115,15 @@ TEST(ex_8_60, heap_if){
     EXPECT_EQ(*(v.end()-1), 35);
 
     sort_heap(v.begin(), v.end(), greater<int>()); //TODO : 근데 왜 sort 하면 반대로 정렬이 되지?
+<<<<<<< HEAD
+//    for(vector<int>::iterator iter2 = v.begin() ;iter2!=v.end() ;++iter2){
+//        cout << *iter2 << "  ";
+//    } // TODO : 왜 for문 프린트 하나 더 추가하니까 TEST Fail 이라고 뜨지?
+=======
     for(vector<int>::iterator iter2 = v.begin() ;iter2!=v.end() ;++iter2){
         cout << *iter2 << "  ";
     } // TODO : 왜 for문 프린트 하나 더 추가하니까 TEST Fail 이라고 뜨지?
+>>>>>>> 3ac16a7... 일부 오류 수정
     EXPECT_EQ(*(v.end()-1), 10);
     EXPECT_EQ(*(v.begin()), 60);
     EXPECT_EQ(*(v.begin()+3), 35);
